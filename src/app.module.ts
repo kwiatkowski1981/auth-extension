@@ -6,10 +6,13 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { IamModule } from './iam/iam.module';
 import { dataSourceOptions } from '../db/data-source.dev';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(dataSourceOptions),
+    // todo SCHEMA VALIDATION lesson from the fundamental s course!!!
+    ConfigModule.forRoot(),
     CoffeesModule,
     UsersModule,
     IamModule,

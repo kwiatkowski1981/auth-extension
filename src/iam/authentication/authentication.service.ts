@@ -11,14 +11,20 @@ import { DataSource, Repository } from 'typeorm';
 import { HashingService } from '../hashing/hashing.service';
 import { SignUpDto } from './dto/sign-up.dto/sign-up.dto';
 import { SignInDto } from './dto/sign-in.dto/sign-in.dto';
+import { JwtService } from '@nestjs/jwt';
+import jwtConfig from '../config/jwt.config';
+import { ConfigType } from '@nestjs/config';
 
 @Injectable()
 export class AuthenticationService {
   private readonly logger = new Logger(AuthenticationService.name); // Logger
   constructor(
     @InjectRepository(User) private readonly usersRepository: Repository<User>,
-    private readonly hashingService: HashingService,
     @Inject(DataSource) private dataSource: DataSource,
+    private readonly hashingService: HashingService,
+    private readonly jwtService: JwtService,
+    @Inject(jwtConfig.KEY)
+    private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
   ) {}
 
   async signUp(signUpDto: SignUpDto) {
@@ -56,7 +62,23 @@ export class AuthenticationService {
       this.logger.error(`Incorrect password`);
       throw new UnauthorizedException(`Password does not match`);
     }
-    //todo here comes something in the next lesson
-    return true;
+    const accessToken = await this.jwtService.signAsync(
+      {
+        // TODO co zamiast sub?
+        //  Note: All HTML wrapper methods are deprecated and only standardized for compatibility purposes.
+        //  Use DOM APIs such as document.createElement() instead.
+        sub: user.id,
+        email: user.email,
+      },
+      {
+        audience: this.jwtConfiguration.audience,
+        issuer: this.jwtConfiguration.issuer,
+        secret: this.jwtConfiguration.secret,
+        expiresIn: this.jwtConfiguration.accessTokenTtl,
+      },
+    );
+    return {
+      accessToken,
+    };
   }
 }
