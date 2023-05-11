@@ -1,0 +1,35 @@
+### Sign in a User
+POST http://localhost:3000/authentication/sign-in
+Content-Type: application/json
+
+{
+"email": "user1@nestjs.com",
+"password": "Password123"
+}
+
+### Create a new User
+POST http://localhost:3000/authentication/sign-up
+Content-Type: application/json
+
+{
+"email": "user1@nestjs.com",
+"password": "Password123"
+}
+
+### Sign in a User with a wrong Password
+POST http://localhost:3000/authentication/sign-in
+Content-Type: application/json
+
+{
+  "email": "user1@nestjs.com",
+  "password": "Password1234567890"
+}
+
+### Sign in a User with a wrong UserName
+POST http://localhost:3000/authentication/sign-in
+Content-Type: application/json
+
+{
+  "email": "user1234567890@nestjs.com",
+  "password": "Password123"
+}
