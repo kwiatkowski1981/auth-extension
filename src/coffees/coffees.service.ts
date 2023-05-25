@@ -12,6 +12,7 @@ export class CoffeesService {
   }
 
   findAll() {
+    this.logger.debug('hited GET all coffees');
     return `This action returns all coffees`;
   }
 

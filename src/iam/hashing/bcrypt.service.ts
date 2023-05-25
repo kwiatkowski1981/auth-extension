@@ -7,11 +7,13 @@ export class BcryptService implements HashingService {
   private readonly logger = new Logger(BcryptService.name); // Logger
 
   async hash(data: string | Buffer): Promise<string> {
+    this.logger.debug('Hashing data');
     const salt = await genSalt();
     return hash(data, salt);
   }
 
   compare(data: string | Buffer, encrypted: string): Promise<boolean> {
+    this.logger.debug('Comparing given hashed data');
     return compare(data, encrypted);
   }
 }
