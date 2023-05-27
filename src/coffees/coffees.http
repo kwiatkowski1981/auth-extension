@@ -15,9 +15,9 @@ Content-Type: application/json
 
 ### Authorization by token. Use token to authorize. Token is valid 3600sek = 1hour
 GET http://localhost:3000/coffees
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsImlhdCI6MTY4NTA0NjE3MiwiZXhwIjoxNjg1MDQ5NzcyLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.ho5pr9Q6muP5SG_8wAWzdwO6RqBl73VvW2QXVq7dh6U
+Authorization: Bearer abcdefgh..
 
 ### last Authorization-Token from sign-in
 Content-Type: application/json
 
-token Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsImlhdCI6MTY4NTA0ODcyMSwiZXhwIjoxNjg1MDUyMzIxLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.Eht9dtS_E_oP5-0Er1HG0f0ijCNbIpovkNF1bUUfT-k'
+token Bearer abcdefgh..
