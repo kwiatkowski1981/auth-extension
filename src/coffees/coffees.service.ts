@@ -5,19 +5,20 @@ import { DataSource } from 'typeorm';
 
 @Injectable()
 export class CoffeesService {
-  private readonly logger = new Logger(CoffeesService.name); // Logger
-  constructor(@Inject(DataSource) private dataSource: DataSource) {} // DB connection in constructor
+  private readonly logger = new Logger(CoffeesService.name);
+  constructor(@Inject(DataSource) private dataSource: DataSource) {}
   create(createCoffeeDto: CreateCoffeeDto) {
     return 'This action adds a new coffee';
   }
 
   findAll() {
-    this.logger.debug('hited GET all coffees');
+    this.logger.debug('hit the GET all coffees');
     return `This action returns all coffees`;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} coffee`;
+    this.logger.debug(`hit the GET a coffee with the ID: ${id})`);
+    return `This action returns a coffee with ID: ${id}`;
   }
 
   update(id: number, updateCoffeeDto: UpdateCoffeeDto) {

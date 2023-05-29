@@ -1,5 +1,5 @@
 ### Get the AuthorisationToken
-###
+### httpOnly: true <<----  ZA-komentowac te linijke w klasie AuthenticationService
 POST http://localhost:3000/authentication/sign-in
 Content-Type: application/json
 
@@ -12,12 +12,10 @@ Content-Type: application/json
 GET http://localhost:3000/coffees
 Content-Type: application/json
 
+### GET Coffee with ID
+GET http://localhost:3000/coffees/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsImlhdCI6MTY4NTM3NTEyNCwiZXhwIjoxNjg1Mzc4NzI0LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.mCwXFojBK3o-IB9rpzbSXhFk00QPE4o4Td-_QZVl4L8
 
 ### Authorization by token. Use token to authorize. Token is valid 3600sek = 1hour
 GET http://localhost:3000/coffees
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsImlhdCI6MTY4NTA0NjE3MiwiZXhwIjoxNjg1MDQ5NzcyLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.ho5pr9Q6muP5SG_8wAWzdwO6RqBl73VvW2QXVq7dh6U
-
-### last Authorization-Token from sign-in
-Content-Type: application/json
-
-token Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsImlhdCI6MTY4NTA0ODcyMSwiZXhwIjoxNjg1MDUyMzIxLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.Eht9dtS_E_oP5-0Er1HG0f0ijCNbIpovkNF1bUUfT-k'
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsImlhdCI6MTY4NTM3NTEyNCwiZXhwIjoxNjg1Mzc4NzI0LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.mCwXFojBK3o-IB9rpzbSXhFk00QPE4o4Td-_QZVl4L8
