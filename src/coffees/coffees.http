@@ -1,5 +1,5 @@
 ### Get the AuthorisationToken
-###
+### httpOnly: true <<----  ZA-komentowac te linijke w klasie AuthenticationService
 POST http://localhost:3000/authentication/sign-in
 Content-Type: application/json
 
@@ -12,12 +12,19 @@ Content-Type: application/json
 GET http://localhost:3000/coffees
 Content-Type: application/json
 
+### GET Coffee with ID
+GET http://localhost:3000/coffees/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsImlhdCI6MTY4NTQ0MzczMSwiZXhwIjoxNjg1NDQ3MzMxLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.UPvx2l4mVx4wCNyz2NexSDRgV0Tk_3ytPHQ47lDrwk8
 
 ### Authorization by token. Use token to authorize. Token is valid 3600sek = 1hour
 GET http://localhost:3000/coffees
-Authorization: Bearer abcdefgh..
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsImlhdCI6MTY4NTQ0MzczMSwiZXhwIjoxNjg1NDQ3MzMxLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.UPvx2l4mVx4wCNyz2NexSDRgV0Tk_3ytPHQ47lDrwk8
 
-### last Authorization-Token from sign-in
+
+### Authorization by REFRESH-token. Use refresh-token to authorize. Token is valid 86400sek = 24 Hours
+POST http://localhost:3000/authentication/refresh-tokens
 Content-Type: application/json
 
-token Bearer abcdefgh..
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiYzM3YjRmODItYzEyMC00MWE0LWJkZjYtMTMzNzA0ODgxNmFjIiwiaWF0IjoxNjg1NTI1MzUzLCJleHAiOjE2ODU2MTE3NTMsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.fg7bVzqo8T99yP4SDzuZTqNGpnb4KQNDU3hR5TlNrSc"
+}
