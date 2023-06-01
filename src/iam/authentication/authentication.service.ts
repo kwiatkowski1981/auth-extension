@@ -51,12 +51,14 @@ export class AuthenticationService {
   }
 
   async signIn(signInDto: SignInDto) {
+    this.logger.debug(`Signing in user ${signInDto.email}`);
     const user = await this.usersRepository.findOneBy({
       email: signInDto.email,
     });
     if (!user) {
       throw new UnauthorizedException('User does not exists');
     }
+    this.logger.debug(`Comparing password with the hashed one`);
     const isEqual = await this.hashingService.compare(
       signInDto.password,
       user.password,
@@ -69,6 +71,7 @@ export class AuthenticationService {
 
   // TODO add interface for refreshToken
   async generateTokens(user: User) {
+    this.logger.debug(`Generating tokens for user ${user.email}`);
     const refreshTokenId = randomUUID();
     const [accessToken, refreshToken] = await Promise.all([
       this.signToken<Partial<ActiveUserData>>(
@@ -80,6 +83,7 @@ export class AuthenticationService {
         refreshTokenId,
       }),
     ]);
+    this.logger.debug(`Inserting the RefreshToken into Redis DB`);
     await this.refreshTokenIdsStorage.insert(user.id, refreshTokenId);
     return {
       accessToken,
@@ -88,6 +92,7 @@ export class AuthenticationService {
   }
 
   async refreshTokens(refreshTokenDto: RefreshTokenDto) {
+    this.logger.debug('Refreshing the Tokens');
     try {
       const { sub, refreshTokenId } = await this.jwtService.verifyAsync<
         Pick<ActiveUserData, 'sub'> & { refreshTokenId: string }
@@ -99,12 +104,15 @@ export class AuthenticationService {
       const user = await this.usersRepository.findOneByOrFail({
         id: sub,
       });
+      this.logger.debug(`Found user ${user.id}`);
       const isValid = await this.refreshTokenIdsStorage.validate(
         user.id,
         refreshTokenId,
       );
       if (isValid) {
+        this.logger.debug(`Token ${refreshTokenId} is valid`);
         await this.refreshTokenIdsStorage.invalidate(user.id);
+        this.logger.debug(`Token ${refreshTokenId} is no more valid`);
       } else {
         throw new Error('Refresh token is invalid');
       }
@@ -119,6 +127,7 @@ export class AuthenticationService {
   }
 
   private async signToken<T>(userId: number, expiresIn: number, payload?: T) {
+    this.logger.debug(`Signing token for user ${userId}`);
     return await this.jwtService.signAsync(
       {
         sub: userId,
