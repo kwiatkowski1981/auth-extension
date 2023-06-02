@@ -1,10 +1,10 @@
 import { CanActivate, ExecutionContext, Injectable, Logger } from "@nestjs/common";
 import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
-import { Role } from '../../../../users/enums/role.enum';
-import { ROLES_KEY } from '../../decorators/role.decorator';
-import { ActiveUserData } from '../../../interfaces/active-user-data.interface';
-import { REQUEST_USER_KEY } from '../../../iam.constants';
+import { Role } from '../../../users/enums/role.enum';
+import { ROLES_KEY } from '../decorators/role.decorator';
+import { ActiveUserData } from '../../interfaces/active-user-data.interface';
+import { REQUEST_USER_KEY } from '../../iam.constants';
 
 @Injectable()
 export class RolesGuard implements CanActivate {

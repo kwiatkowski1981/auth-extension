@@ -8,3 +8,7 @@ async function bootstrap() {
   await app.listen(3000);
 }
 bootstrap();
+
+// TODO claims-based Authorization make DB entity etc for ROLES and Permissions
+// add the relations etc..
+// lesson Claims-based Authorization (3:30min)
