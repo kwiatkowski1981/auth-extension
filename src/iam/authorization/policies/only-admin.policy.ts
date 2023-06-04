@@ -9,7 +9,7 @@ export class OnlyAdminPolicy implements Policy {
 }
 
 @Injectable()
-export class IsAdminPolicyHandler implements PolicyHandler<OnlyAdminPolicy> {
+export class OnlyAdminPolicyHandler implements PolicyHandler<OnlyAdminPolicy> {
   private readonly logger = new Logger(OnlyAdminPolicy.name); // Logger
   constructor(private readonly policyHandlerStorage: PolicyHandlerStorage) {
     this.policyHandlerStorage.add(OnlyAdminPolicy, this);
