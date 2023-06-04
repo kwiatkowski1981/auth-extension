@@ -18,6 +18,7 @@ import { PolicyHandlerStorage } from './authorization/policies/policy-handlers.s
 import { FrameworkContributorPolicyHandler } from './authorization/policies/framework-contributor.policy';
 import { PoliciesGuard } from './authorization/guards/policies.guard';
 import { MinimumAgePolicyHandler } from "./authorization/policies/minimum-age.policy";
+import { OnlyAdminPolicy } from "./authorization/policies/only-admin.policy";
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { MinimumAgePolicyHandler } from "./authorization/policies/minimum-age.po
     PolicyHandlerStorage,
     FrameworkContributorPolicyHandler,
     MinimumAgePolicyHandler,
+    OnlyAdminPolicy,
   ],
   controllers: [AuthenticationController],
 })
