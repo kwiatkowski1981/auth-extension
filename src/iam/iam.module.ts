@@ -17,6 +17,7 @@ import { PermissionsGuard } from './authorization/guards/permissions.guard';
 import { PolicyHandlerStorage } from './authorization/policies/policy-handlers.storage';
 import { FrameworkContributorPolicyHandler } from './authorization/policies/framework-contributor.policy';
 import { PoliciesGuard } from './authorization/guards/policies.guard';
+import { MinimumAgePolicyHandler } from "./authorization/policies/minimum-age.policy";
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { PoliciesGuard } from './authorization/guards/policies.guard';
     AuthenticationService,
     PolicyHandlerStorage,
     FrameworkContributorPolicyHandler,
+    MinimumAgePolicyHandler,
   ],
   controllers: [AuthenticationController],
 })

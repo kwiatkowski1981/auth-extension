@@ -1,11 +1,17 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { Role } from '../enums/role.enum';
-import { Permission, PermissionType } from "../../iam/authorization/permission.type";
+import {
+  Permission,
+  PermissionType,
+} from '../../iam/authorization/permission.type';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column({ nullable: false })
+  age: number;
 
   @Column({ unique: true })
   email: string;

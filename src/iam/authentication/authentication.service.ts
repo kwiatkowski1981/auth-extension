@@ -37,6 +37,7 @@ export class AuthenticationService {
   async signUp(signUpDto: SignUpDto) {
     try {
       const user = new User();
+      user.age = signUpDto.age;
       user.email = signUpDto.email;
       user.password = await this.hashingService.hash(signUpDto.password);
 
@@ -78,6 +79,7 @@ export class AuthenticationService {
         user.id,
         this.jwtConfiguration.accessTokenTtl,
         {
+          age: user.age,
           email: user.email,
           role: user.role,
           // ⚠️ WARNING ==> usually DB from [permissionId.1, permissionId.2, permissionId.3]

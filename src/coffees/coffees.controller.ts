@@ -18,6 +18,7 @@ import { Permission } from '../iam/authorization/permission.type';
 import { Permissions } from '../iam/authorization/decorators/permission.decorator';
 import { FrameworkContributorPolicy } from '../iam/authorization/policies/framework-contributor.policy';
 import { Policies } from '../iam/authorization/decorators/policies.decorator';
+import { MinimumAgePolicy } from '../iam/authorization/policies/minimum-age.policy';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -28,7 +29,9 @@ export class CoffeesController {
   // @Roles(Role.Regular)
   // TODO do 2 more policies ==> /** new MinAgePolicy(18), new OnlyAdminPolicy() */
   @Policies(
-    new FrameworkContributorPolicy() /** new MinAgePolicy(18), new OnlyAdminPolicy() */,
+    new FrameworkContributorPolicy(),
+    new MinimumAgePolicy(Number(18)),
+    /** new OnlyAdminPolicy() */
   )
   @Post()
   create(@Body() createCoffeeDto: CreateCoffeeDto) {
