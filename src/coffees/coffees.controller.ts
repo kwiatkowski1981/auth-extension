@@ -20,18 +20,20 @@ import { FrameworkContributorPolicy } from '../iam/authorization/policies/framew
 import { Policies } from '../iam/authorization/decorators/policies.decorator';
 import { MinimumAgePolicy } from '../iam/authorization/policies/minimum-age.policy';
 import { OnlyAdminPolicy } from '../iam/authorization/policies/only-admin.policy';
+import { AuthType } from '../iam/authentication/enums/auth-type.enum';
+import { Auth } from '../iam/authentication/decorators/auth.decorator';
 
+@Auth(AuthType.Bearer, AuthType.ApiKey)
 @Controller('coffees')
 export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
   // @Roles(Role.Admin)
-  // @Permissions(Permission.CreateCoffee)
   // @Roles(Role.Regular)
-  // TODO do 2 more policies ==> /** new OnlyAdminPolicy() */
+  // @Permissions(Permission.CreateCoffee)
   @Policies(
     new FrameworkContributorPolicy(),
-    new MinimumAgePolicy(Number(18)),
+    new MinimumAgePolicy(18),
     new OnlyAdminPolicy(),
   )
   @Post()

@@ -43,7 +43,10 @@ export class AccessTokenGuard implements CanActivate {
 
   private extractTokenFromHeader(request: Request): string | undefined {
     // ignorujemy pierwsza czesc, czyli prefix bo interesuje nas tylko sam token, dlatego tablica wyglada tak:[_, token]
-    const [_, token] = request.headers.authorization?.split(' ') ?? [];
-    return token;
+    // const [_, token] = request.headers.authorization?.split(' ') ?? [];
+
+    // 👈 zaktualizowana wersja do lekcji o API_KEYS
+    const [type, token] = request.headers.authorization?.split(' ') ?? [];
+    return type === 'Bearer' ? token : undefined;
   }
 }

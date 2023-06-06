@@ -19,10 +19,13 @@ import { FrameworkContributorPolicyHandler } from './authorization/policies/fram
 import { PoliciesGuard } from './authorization/guards/policies.guard';
 import { MinimumAgePolicyHandler } from './authorization/policies/minimum-age.policy';
 import { OnlyAdminPolicyHandler } from './authorization/policies/only-admin.policy';
+import { ApiKeysService } from './authentication/api-keys.service';
+import { ApiKey } from "../users/api-keys/entities/api-key.entity";
+import { ApiKeyGuard } from "./authentication/guards/api-key/api-key.guard";
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User, ApiKey]),
     JwtModule.registerAsync(jwtConfig.asProvider()),
     ConfigModule.forFeature(jwtConfig),
   ],
@@ -48,12 +51,14 @@ import { OnlyAdminPolicyHandler } from './authorization/policies/only-admin.poli
       useClass: PoliciesGuard,
     },
     AccessTokenGuard,
+    ApiKeyGuard,
     RefreshTokenIdsStorage,
     AuthenticationService,
     PolicyHandlerStorage,
     FrameworkContributorPolicyHandler,
     MinimumAgePolicyHandler,
     OnlyAdminPolicyHandler,
+    ApiKeysService,
   ],
   controllers: [AuthenticationController],
 })
