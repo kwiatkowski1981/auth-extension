@@ -20,8 +20,10 @@ import { PoliciesGuard } from './authorization/guards/policies.guard';
 import { MinimumAgePolicyHandler } from './authorization/policies/minimum-age.policy';
 import { OnlyAdminPolicyHandler } from './authorization/policies/only-admin.policy';
 import { ApiKeysService } from './authentication/api-keys.service';
-import { ApiKey } from "../users/api-keys/entities/api-key.entity";
-import { ApiKeyGuard } from "./authentication/guards/api-key/api-key.guard";
+import { ApiKey } from '../users/api-keys/entities/api-key.entity';
+import { ApiKeyGuard } from './authentication/guards/api-key/api-key.guard';
+import { GoogleAuthenticationService } from './authentication/social/google-authentication.service';
+import { GoogleAuthenticationController } from './authentication/social/google-authentication.controller';
 
 @Module({
   imports: [
@@ -59,7 +61,8 @@ import { ApiKeyGuard } from "./authentication/guards/api-key/api-key.guard";
     MinimumAgePolicyHandler,
     OnlyAdminPolicyHandler,
     ApiKeysService,
+    GoogleAuthenticationService,
   ],
-  controllers: [AuthenticationController],
+  controllers: [AuthenticationController, GoogleAuthenticationController],
 })
 export class IamModule {}

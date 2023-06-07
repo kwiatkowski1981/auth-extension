@@ -17,14 +17,17 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   age: number;
 
   @Column({ unique: true })
   email: string;
 
-  @Column()
+  @Column({ nullable: true })
   password: string;
+
+  @Column({ nullable: true })
+  googleId: string; // 👈 NEW
 
   @Column({ enum: Role, default: Role.Regular })
   role: Role;

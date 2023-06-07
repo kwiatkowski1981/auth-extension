@@ -1,5 +1,6 @@
 ### Get the AuthorisationToken
-### httpOnly: true <<----  ZA-komentowac te linijke w klasie AuthenticationService
+< {% client.global.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImFnZSI6MTgsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsInJvbGUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZV9jb2ZmZWUiXSwiaWF0IjoxNjg2MTU5Mjc3LCJleHAiOjE2ODYxNjI4NzcsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.m1iTIqbD48RkzYPI4gaclUwUFz_fDu3-7qT2UEXg7Oc") %}
+# httpOnly: true <<----  ZA-komentowac te linijke w klasie AuthenticationService
 POST http://localhost:3000/authentication/sign-in
 Content-Type: application/json
 
@@ -10,29 +11,27 @@ Content-Type: application/json
 
 ### GET Coffees
 GET http://localhost:3000/coffees
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiNGJkZDZhOGYtZWQ1ZS00MTM1LWI2ZGMtYWZlMDc3MTJlZWExIiwiaWF0IjoxNjg1ODgyMzk2LCJleHAiOjE2ODU5Njg3OTYsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.bGLIAVhiitxL9d6_haMhSd-MiDSOPhGt8agWCbkAnJo
+Authorization: Bearer {{token}}
 
 
 ### GET Coffee with ID
 GET http://localhost:3000/coffees/1234567890
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiNGJkZDZhOGYtZWQ1ZS00MTM1LWI2ZGMtYWZlMDc3MTJlZWExIiwiaWF0IjoxNjg1ODgyMzk2LCJleHAiOjE2ODU5Njg3OTYsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.bGLIAVhiitxL9d6_haMhSd-MiDSOPhGt8agWCbkAnJo
+Authorization: Bearer {{token}}
 
 ### Authorization by token. Use token to authorize. Token is valid 3600sek = 1hour
 GET http://localhost:3000/coffees
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiNGJkZDZhOGYtZWQ1ZS00MTM1LWI2ZGMtYWZlMDc3MTJlZWExIiwiaWF0IjoxNjg1ODgyMzk2LCJleHAiOjE2ODU5Njg3OTYsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.bGLIAVhiitxL9d6_haMhSd-MiDSOPhGt8agWCbkAnJo
+Authorization: Bearer {{token}}
 
 
 ### Authorization by REFRESH-token. Use refresh-token to authorize. Token is valid 86400sek = 24 Hours
 POST http://localhost:3000/authentication/refresh-tokens
 Content-Type: application/json
 
-{
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiNGJkZDZhOGYtZWQ1ZS00MTM1LWI2ZGMtYWZlMDc3MTJlZWExIiwiaWF0IjoxNjg1ODgyMzk2LCJleHAiOjE2ODU5Njg3OTYsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.bGLIAVhiitxL9d6_haMhSd-MiDSOPhGt8agWCbkAnJo"
-}
+{"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiMDBmODEzYzAtOWJmZi00NjZhLTkzNWEtMjNhMGZjMTA2MDQ4IiwiaWF0IjoxNjg2MTU5Mjc3LCJleHAiOjE2ODYyNDU2NzcsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.TwjHb7qvv3VpYbkG39X4PFCBO7wW8Z-I7bQtlQqJlXE"}
 
 ### Create a new Coffee <== accessToken and not the refreshToken
 POST http://localhost:3000/coffees
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImFnZSI6MTgsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsInJvbGUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZV9jb2ZmZWUiXSwiaWF0IjoxNjg2MDgyMDYxLCJleHAiOjE2ODYwODU2NjEsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.hnPQvU3EuggSqdF9usHYXzVvNT02EZ0ONpiBctsorp0
+Authorization: Bearer {{token}}
 
 ### Get all Coffess with the ApiKey access
 GET http://localhost:3000/coffees
