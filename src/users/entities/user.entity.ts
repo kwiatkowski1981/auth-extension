@@ -26,11 +26,17 @@ export class User {
   @Column({ nullable: true })
   password: string;
 
+  @Column({ default: false })
+  isTfaEnabled: boolean; // 👈 NEW
+
   @Column({ nullable: true })
-  googleId: string; // 👈 NEW
+  tfaSecret: string; // 👈 NEW
 
   @Column({ enum: Role, default: Role.Regular })
   role: Role;
+
+  @Column({ nullable: true })
+  googleId: string;
 
   // NOTE: Having the "permissions" column in combination with the "role"
   // likely does not make sense. We use both in this course just to showcase
@@ -38,7 +44,7 @@ export class User {
   @Column({ enum: Permission, default: [], type: 'json' })
   permissions: PermissionType[];
 
-  @JoinTable() // 👈
+  @JoinTable()
   @OneToMany((type) => ApiKey, (apiKey) => apiKey.user)
   apiKeys: ApiKey[];
 }

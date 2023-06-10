@@ -1,5 +1,5 @@
 ### Get the AuthorisationToken
-< {% client.global.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImFnZSI6MTgsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsInJvbGUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZV9jb2ZmZWUiXSwiaWF0IjoxNjg2MTY3NjQ1LCJleHAiOjE2ODYxNzEyNDUsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.BoIGMXxEEzbcS-pfF965Vo70PiX8tv4bXfHtjaooN2Y") %}
+< {% client.global.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImFnZSI6MTgsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsInJvbGUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZV9jb2ZmZWUiXSwiaWF0IjoxNjg2NDI1ODA4LCJleHAiOjE2ODY0Mjk0MDgsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ._NZi9OVQ8iGGrnd4O_M1nd18LE1_qgpyZg1doJj3lYM") %}
 # httpOnly: true <<----  ZA-komentowac te linijke w klasie AuthenticationService
 POST http://localhost:3000/authentication/sign-in
 Content-Type: application/json
@@ -27,7 +27,7 @@ Authorization: Bearer {{token}}
 POST http://localhost:3000/authentication/refresh-tokens
 Content-Type: application/json
 
-{"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiMDBmODEzYzAtOWJmZi00NjZhLTkzNWEtMjNhMGZjMTA2MDQ4IiwiaWF0IjoxNjg2MTU5Mjc3LCJleHAiOjE2ODYyNDU2NzcsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.TwjHb7qvv3VpYbkG39X4PFCBO7wW8Z-I7bQtlQqJlXE"}
+{"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiZjc2NzIyMGItNWZlZi00NzliLWJlZWEtNWUxNDA2NThiYmZjIiwiaWF0IjoxNjg2NDI1NjkzLCJleHAiOjE2ODY1MTIwOTMsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.ZcM1VM2SWk6gT0vn4TRIjRQxtkjc76maQmBJS3YWpV4"}
 
 ### Create a new Coffee <== accessToken and not the refreshToken
 POST http://localhost:3000/coffees
