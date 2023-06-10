@@ -1,5 +1,5 @@
 ### Get the AuthorisationToken
-< {% client.global.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImFnZSI6MTgsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsInJvbGUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZV9jb2ZmZWUiXSwiaWF0IjoxNjg2MTU5Mjc3LCJleHAiOjE2ODYxNjI4NzcsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.m1iTIqbD48RkzYPI4gaclUwUFz_fDu3-7qT2UEXg7Oc") %}
+< {% client.global.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImFnZSI6MTgsImVtYWlsIjoidXNlcjFAbmVzdGpzLmNvbSIsInJvbGUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZV9jb2ZmZWUiXSwiaWF0IjoxNjg2MTY3NjQ1LCJleHAiOjE2ODYxNzEyNDUsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.BoIGMXxEEzbcS-pfF965Vo70PiX8tv4bXfHtjaooN2Y") %}
 # httpOnly: true <<----  ZA-komentowac te linijke w klasie AuthenticationService
 POST http://localhost:3000/authentication/sign-in
 Content-Type: application/json
